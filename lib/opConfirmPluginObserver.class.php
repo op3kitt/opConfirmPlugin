@@ -29,7 +29,7 @@ class opConfirmPluginObserver extends sfActions
         $event['actionInstance']->getResponse()->addJavascript(sfConfig::get('op_jquery_url'),'last');
       }
       else
-      }
+      {
         $event['actionInstance']->getResponse()->addJavascript('jquery.min.js', 'last');
       }
       $event['actionInstance']->getResponse()->addJavascript('/opConfirmPlugin/js/opConfirm','last');
