@@ -13,7 +13,11 @@ $(function(){
 	}
 	previewWindow = $('<div id="opConfirmWindow_contents" class="parts form" style="display:none;margin: 0 auto;"></div>');
 	$("form input:submit").click(function(){
-		var trs = $(this.form).children("table").children().children();
+    var objName = this.name;
+    if (objName == 'is_draft'){
+      $(this.form).append('<input type="hidden" name="is_draft" value="is_draft" />')
+    }
+    var trs = $(this.form).children("table").children().children();
 		if(trs.length && $(this.form).attr("method") == "post"){
 			$(this.form).after(previewWindow);
 			$(this.form).hide();
@@ -160,7 +164,10 @@ $(function(){
 			}
 			var operation = $('<div class="operation"></div>');
 			var moreInfo = $('<ul class="moreInfo"></ul>');
-			var btn = $('<input type="button" class="input_submit" value="確定" />');
+      var btn = $('<input type="button" class="input_submit" value="確定" />');
+      if (objName == 'is_draft'){
+        btn = $('<input type="button" class="input_submit" value="下書き保存" />');
+      }
 			btn.click(function (form){return function(){
 					form.submit();
 				};
